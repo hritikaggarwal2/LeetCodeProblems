@@ -2,18 +2,17 @@ import java.util.*;
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new TreeMap<>();
+        Map<Integer, Integer> store = new HashMap<>();
 
-        int index = 0;
-        for (int i : nums) {
-            int diff = target - i;
-            if (map.containsKey(diff)) {
-                return new int[] { index, map.get(diff) };
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (store.containsKey(diff)) {
+                return new int[] { store.get(diff), i };
             }
 
-            map.put(i, index++);
+            store.put(nums[i], i);
         }
 
-        return new int[] {};
+        return new int[2];
     }
 }
